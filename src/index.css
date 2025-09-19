@@ -2,95 +2,204 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cinematic NASA Earth Intelligence Platform Design System */
+/* All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
+    /* Base Cinematic Theme */
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+    --surface: 220 20% 12%;
+    --surface-elevated: 220 15% 16%;
+    
+    /* NASA Mission Control Cards */
+    --card: 220 20% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 220 15% 18%;
+    
+    /* Interactive Elements */
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 40% 98%;
+    --border: 220 15% 18%;
+    --input: 220 15% 16%;
+    --ring: 195 100% 60%;
+    
+    /* NASA Blue Primary */
+    --primary: 220 100% 60%;
+    --primary-foreground: 220 25% 8%;
+    --primary-glow: 220 100% 70%;
+    
+    /* Mission Control Secondary */
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Muted Control Elements */
+    --muted: 220 15% 16%;
+    --muted-foreground: 215 20% 65%;
+    
+    /* Electric Accent */
+    --accent: 195 100% 60%;
+    --accent-foreground: 220 25% 8%;
+    
+    /* Metric-Specific Neon Colors */
+    --heat: 15 100% 60%;        /* Neon Orange */
+    --heat-glow: 15 100% 70%;
+    --air: 195 100% 60%;        /* Neon Cyan */  
+    --air-glow: 195 100% 70%;
+    --flood: 220 100% 60%;      /* Neon Blue */
+    --flood-glow: 220 100% 70%;
+    --green: 150 100% 60%;      /* Neon Green */
+    --green-glow: 150 100% 70%;
+    --waste: 280 100% 60%;      /* Neon Purple */
+    --waste-glow: 280 100% 70%;
+    
+    /* Status Colors */
+    --success: 150 100% 60%;
+    --success-foreground: 220 25% 8%;
+    --warning: 45 100% 60%;
+    --warning-foreground: 220 25% 8%;
+    --destructive: 0 100% 60%;
     --destructive-foreground: 210 40% 98%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-elevated)));
+    --gradient-glow: radial-gradient(circle at center, hsl(var(--primary) / 0.3), transparent 70%);
+    
+    /* Shadows and Glows */
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 4px 20px hsl(220 25% 4% / 0.5);
+    --shadow-elevated: 0 8px 40px hsl(220 25% 4% / 0.6);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s ease, transform 0.3s ease;
+    
+    --radius: 12px;
+    --radius-lg: 16px;
+    --radius-sm: 8px;
+  }
+}
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@layer base {
+  * {
+    @apply border-border;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.05) 0%, transparent 50%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(220 25% 6%));
+    min-height: 100vh;
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+  }
+  
+  .glow-heat {
+    box-shadow: 0 0 20px hsl(var(--heat) / 0.4);
+  }
+  
+  .glow-air {
+    box-shadow: 0 0 20px hsl(var(--air) / 0.4);
+  }
+  
+  .glow-flood {
+    box-shadow: 0 0 20px hsl(var(--flood) / 0.4);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 20px hsl(var(--green) / 0.4);
+  }
+  
+  .glow-waste {
+    box-shadow: 0 0 20px hsl(var(--waste) / 0.4);
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  /* Breathing Animation */
+  @keyframes breathe {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+      transform: scale(1.02);
+    }
+  }
+  
+  .animate-breathe {
+    animation: breathe 3s ease-in-out infinite;
+  }
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  /* Ripple Effect */
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+  
+  .animate-ripple {
+    animation: ripple 1.5s ease-out;
+  }
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  /* Pulse Glow */
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 15px hsl(var(--primary) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 25px hsl(var(--primary) / 0.6);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+  /* Holographic Text Effect */
+  .text-holographic {
+    background: linear-gradient(90deg, 
+      hsl(var(--primary)), 
+      hsl(var(--accent)), 
+      hsl(var(--primary))
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: holographic 3s ease-in-out infinite;
+  }
+  
+  @keyframes holographic {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  /* Scan Line Effect */
+  .scan-lines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 50%,
+      hsl(var(--primary) / 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
   }
 }
 
