@@ -155,7 +155,7 @@ const Index = () => {
               key={module.title}
               {...module}
               className="animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+              
             />
           ))}
         </div>
